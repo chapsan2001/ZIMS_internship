@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ydg-fD-yQy"/>
+                        <viewControllerLayoutGuide type="bottom" id="xbc-2k-c8Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                                <rect key="frame" x="144.66666666666666" y="195.33333333333334" width="124.99999999999997" height="110.00000000000003"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zambia Department  of Immigration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5c-SR-Yed">
+                                <rect key="frame" x="32" y="333.33333333333331" width="350" height="69.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-tD-6uA">
+                                <rect key="frame" x="158.66666666666666" y="655" width="96.666666666666657" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.38431372549019605" green="0.53725490196078429" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="S5c-SR-Yed" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0QL-uL-h4o"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DSU-e1-7et"/>
+                            <constraint firstItem="S5c-SR-Yed" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="32" id="I8Z-Sl-IiX"/>
+                            <constraint firstItem="S5c-SR-Yed" firstAttribute="top" secondItem="YRO-k0-Ey4" secondAttribute="bottom" constant="28" id="OH4-UD-2Vr"/>
+                            <constraint firstAttribute="trailing" secondItem="S5c-SR-Yed" secondAttribute="trailing" constant="32" id="UPc-wK-PuI"/>
+                            <constraint firstItem="d3g-tD-6uA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WI9-rq-PdT"/>
+                            <constraint firstAttribute="bottom" secondItem="d3g-tD-6uA" secondAttribute="bottom" constant="60" id="lBy-sc-s0A"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76.811594202898561" y="251.11607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LaunchImage" width="125" height="110"/>
+    </resources>
+</document>
