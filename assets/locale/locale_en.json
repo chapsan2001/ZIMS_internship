@@ -1,0 +1,102 @@
+{
+  "app": {
+    "name": "ZIMS Mobile"
+  },
+  "login": {
+    "title": "Log in",
+    "username": "Username",
+    "password": "Password",
+    "department": "Zambia Department\nof Immigration",
+    "invalid_login_or_password": "Invalid login or password",
+    "forgot_password": "Forgot your password or username?\nPlease contact the Administrator."
+  },
+  "enter_id": {
+    "title": "Enter ID",
+    "document_type": "Document type",
+    "find_document": "Find document",
+    "scan_qr_code": "Scan QR-code",
+    "scan_qr_error": "Camera permission is denied!"
+  },
+  "document_type": {
+    "title": "Document type",
+    "permit": "Permit",
+    "visa": "Visa",
+    "passport": "Passport",
+    "receipt": "Receipt"
+  },
+  "logout": {
+    "title": "Log out",
+    "are_you_sure": "Are you sure you want to logout?",
+    "back": "Back"
+  },
+  "lock_the_app": {
+    "title": "Lock the app",
+    "are_you_sure": "Are you sure you want to lock the app?",
+    "lock": "Lock",
+    "back": "Back"
+  },
+  "permit_data": {
+    "title": "Permit data",
+    "valid_from": "Valid From",
+    "valid_until": "Valid Until",
+    "issued_by": "Issued by",
+    "passport": "Passport",
+    "passport_number": "Passport number",
+    "country": "Country",
+    "issued_at": "Issued at",
+    "passport_issued_on": "Passport issued on",
+    "passport_expires_on": "Passport expires on",
+    "person": "Person",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "middle_name": "Middle name",
+    "file_number": "File number",
+    "gender": "Gender",
+    "additional_information": "Additional information",
+    "comment": "Comment"
+  },
+  "permit_photo": {
+    "title": "Permit photo"
+  },
+  "history": {
+    "title": "History",
+    "document_type": "Document type: ",
+    "document_number": "Document number: ",
+    "permit_type": "Permit type: ",
+    "permit_number": "Permit number: ",
+    "date_time_scanned": "Date & time scanned: ",
+    "no_docs": "No documents were scanned."
+  },
+  "clear_history": {
+    "title": "Clear history",
+    "are_you_sure": "Are you sure you want to clear the history?",
+    "clear": "Clear",
+    "back": "Back"
+  },
+  "pin_init": {
+    "title": "PIN initialization",
+    "no_match": "PINs do not match!",
+    "enter_first": "Enter a 4-digit PIN",
+    "enter_second": "Enter the PIN once again"
+  },
+  "pin_help": {
+    "title": "Help",
+    "msg": "There you can protect your session with 4-digit PIN. The session lasts 12 hours or until it will be terminated by explicitly logging out from the application. If you discontinue using the application for longer than 3 minutes, you will be prompted to enter the PIN again in order to continue the session. If you forget the PIN during the session, you can log out from the application, log in once again and use another one. Your PIN is stored locally, this feature is made for you not to have to type your long and secure password."
+  },
+  "pin_skip": {
+    "title": "Skip PIN initialization",
+    "are_you_sure": "Are you sure you want to proceed without creating a PIN?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "pin_lock": {
+    "title": "PIN input",
+    "enter": "Enter your PIN",
+    "wrong_pin": "Wrong PIN! ",
+    "attempts_left": " attempts left.",
+    "attempt_left": " attempt left."
+  },
+  "messages": {
+    "not_found": "Not Found"
+  }
+}
