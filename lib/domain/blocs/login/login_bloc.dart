@@ -5,6 +5,7 @@ import 'package:zimsmobileapp/domain/blocs/login/login_states.dart';
 import 'package:zimsmobileapp/domain/navigation/navigation_manager.dart';
 import 'package:zimsmobileapp/domain/navigation/routes.dart';
 import 'package:zimsmobileapp/domain/repositories/auth_repository.dart';
+import 'package:zimsmobileapp/main.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRepository authRepository;
@@ -22,6 +23,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       try {
         final user = await authRepository.login(event.userName, event.password);
+        userName = event.userName;
         navigationManager.pushRouteWithReplacement(Routes.PIN_CODE_INIT);
         yield LoginInitial();
       } catch (e) {

@@ -7,6 +7,7 @@ import 'package:zimsmobileapp/domain/models/models.dart';
 import 'package:zimsmobileapp/domain/navigation/navigation_manager.dart';
 import 'package:zimsmobileapp/domain/navigation/routes.dart';
 import 'package:zimsmobileapp/domain/repositories/permit_repository.dart';
+import 'package:zimsmobileapp/main.dart';
 
 class PermitDataBloc extends Bloc<PermitDataEvent, PermitDataState> {
   final PermitRepository permitRepository;
@@ -40,6 +41,13 @@ class PermitDataBloc extends Bloc<PermitDataEvent, PermitDataState> {
       yield PermitDataNotFound();
     } on UnauthorizedException {
       navigationManager.pushRouteWithReplacement(Routes.LOGIN);
+      userName = null;
+      attempts = 3;
+      pinFlag = false;
+      pin = [null, null, null, null];
+      pinEnter = [null, null, null, null];
+      dots = [false, false, false, false];
+      dotNum = 0;
     } catch (e) {
       yield PermitDataError(exception: e);
     }

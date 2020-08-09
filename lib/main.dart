@@ -21,6 +21,7 @@ bool pinFlag = false;
 List<bool> dots = [false, false, false, false];
 int dotNum = 0;
 int attempts = 3;
+String userName;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

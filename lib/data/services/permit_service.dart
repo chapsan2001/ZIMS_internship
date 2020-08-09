@@ -5,6 +5,7 @@ import 'package:zimsmobileapp/domain/models/permit_data.dart';
 import 'package:zimsmobileapp/domain/repositories/permit_repository.dart';
 import 'package:zimsmobileapp/domain/utils/app_preferences.dart';
 import 'package:hive/hive.dart';
+import 'package:zimsmobileapp/main.dart';
 
 class PermitService implements PermitRepository {
   final AppPreferences appPreferences;
@@ -39,7 +40,8 @@ class PermitService implements PermitRepository {
           fileNumber: permitDataResponse.person.fileNumber,
           gender: permitDataResponse.person.gender,
           comment: permitDataResponse.comment,
-          timeScanned: DateTime.now());
+          timeScanned: DateTime.now(),
+          userName: userName);
       if (Hive.box('history').length < 10) {
         Hive.box('history').put(Hive.box('history').length+1, pd);
       } else {

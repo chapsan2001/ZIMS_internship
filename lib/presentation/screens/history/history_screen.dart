@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimsmobileapp/domain/blocs/blocs.dart';
 import 'package:zimsmobileapp/domain/models/models.dart';
+import 'package:zimsmobileapp/main.dart';
 import 'package:zimsmobileapp/presentation/styles.dart';
 import 'package:zimsmobileapp/presentation/theme_provider_mixin.dart';
 import 'package:intl/intl.dart';
@@ -26,6 +27,8 @@ class _HistoryScreenState extends State<HistoryScreen>
   Color _grayBackground;
   Color _darkGray;
   Color _lightGray;
+
+  int tileIndex = 1;
 
   void initState() {
     super.initState();
@@ -61,46 +64,50 @@ class _HistoryScreenState extends State<HistoryScreen>
             documentNumber: _pd.permitNumber)));
   }
 
-  Widget historyCardTemplate(int i){
+  Widget historyCardTemplate(int i, int j){
     int index = Hive.box('history').length-1-i;
     final _pd = Hive.box('history').getAt(index) as PermitData;
-    return GestureDetector(
-      onTap: () => _onListTileTapped(index),
-      child: Card(
-          elevation: 1,
-          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              CircleAvatar(
-                radius: 27,
-                backgroundColor: getAppThemeData(context).primaryColor,
-                child: CircleAvatar(
-                  radius: 24.5,
-                  backgroundColor: Colors.white,
-                  child: Text((i+1).toString(),
-                      style: TextStyle(color: Colors.black, fontSize: 19)
+    if (userName == _pd.userName) {
+      return GestureDetector(
+        onTap: () => _onListTileTapped(index),
+        child: Card(
+            elevation: 1,
+            margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 27,
+                  backgroundColor: getAppThemeData(context).primaryColor,
+                  child: CircleAvatar(
+                    radius: 24.5,
+                    backgroundColor: Colors.white,
+                    child: Text(j.toString(),
+                        style: TextStyle(color: Colors.black, fontSize: 19)
+                    ),
                   ),
                 ),
-              ),
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: 3),
-                    Text(allTranslations.text("history.document_type")+_pd.documentType, style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
-                    Text(allTranslations.text("history.document_number")+_pd.documentNumber, style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
-                    Text(allTranslations.text("history.permit_type")+_pd.permitType, style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
-                    Text(allTranslations.text("history.permit_number")+_pd.permitNumber, style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
-                    Text(allTranslations.text("history.date_time_scanned")+DateFormat.yMEd().add_jms().format(_pd.timeScanned), style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
-                    SizedBox(height: 3),
-                  ],
-                ),
-              )
-            ],
-          )
-      ),
-    );
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(height: 3),
+                      Text(allTranslations.text("history.document_type")+_pd.documentType, style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
+                      Text(allTranslations.text("history.document_number")+_pd.documentNumber, style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
+                      Text(allTranslations.text("history.permit_type")+_pd.permitType, style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
+                      Text(allTranslations.text("history.permit_number")+_pd.permitNumber, style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
+                      Text(allTranslations.text("history.date_time_scanned")+DateFormat.yMEd().add_jms().format(_pd.timeScanned), style: TextStyle(fontSize: 14), textAlign: TextAlign.center),
+                      SizedBox(height: 3),
+                    ],
+                  ),
+                )
+              ],
+            )
+        ),
+      );
+    } else {
+      return null;
+    }
   }
 
   @override
@@ -112,7 +119,15 @@ class _HistoryScreenState extends State<HistoryScreen>
         builder: (context, state) {
           int listTilesCount;
           bool histFlag;
-          if (Hive.box('history').length == 0) {
+          bool userFlag;
+          for (int i = 0; i <= Hive.box('history').length; i++) {
+            final _pd = Hive.box('history').getAt(i) as PermitData;
+            if (userName == _pd.userName) {
+              userFlag = true;
+              break;
+            }
+          }
+          if (Hive.box('history').length == 0 || !userFlag) {
             listTilesCount = 1;
             histFlag = false;
           } else {
@@ -143,8 +158,9 @@ class _HistoryScreenState extends State<HistoryScreen>
               child: ListView.builder(
                 itemCount: listTilesCount,
                 itemBuilder: (BuildContext context, int index) {
-                  if (histFlag) {
-                    return historyCardTemplate(index);
+                  if (histFlag && userFlag) {
+                    tileIndex++;
+                    return historyCardTemplate(index, tileIndex--);
                   } else {
                     return ListTile(
                       title: Text(allTranslations.text("history.no_docs"),

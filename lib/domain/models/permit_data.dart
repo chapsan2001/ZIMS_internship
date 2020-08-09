@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
+import 'package:zimsmobileapp/domain/models/user.dart';
 
 part 'permit_data.g.dart';
 
@@ -55,6 +56,9 @@ class PermitData extends Equatable {
   @HiveField(20)
   final DateTime timeScanned;
 
+  @HiveField(21)
+  final String userName;
+
   PermitData(
       {this.documentStatus,
       this.documentType,
@@ -76,7 +80,8 @@ class PermitData extends Equatable {
       this.fileNumber,
       this.gender,
       this.comment,
-      this.timeScanned});
+      this.timeScanned,
+      this.userName});
 
   @override
   List<Object> get props => [
@@ -100,6 +105,7 @@ class PermitData extends Equatable {
         fileNumber,
         gender,
         comment,
-        timeScanned
+        timeScanned,
+        userName
       ];
 }

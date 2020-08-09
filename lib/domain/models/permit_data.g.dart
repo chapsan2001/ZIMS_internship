@@ -38,13 +38,14 @@ class PermitDataAdapter extends TypeAdapter<PermitData> {
       gender: fields[18] as String,
       comment: fields[19] as String,
       timeScanned: fields[20] as DateTime,
+      userName: fields[21] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, PermitData obj) {
     writer
-      ..writeByte(21)
+      ..writeByte(22)
       ..writeByte(0)
       ..write(obj.documentStatus)
       ..writeByte(1)
@@ -86,6 +87,8 @@ class PermitDataAdapter extends TypeAdapter<PermitData> {
       ..writeByte(19)
       ..write(obj.comment)
       ..writeByte(20)
-      ..write(obj.timeScanned);
+      ..write(obj.timeScanned)
+      ..writeByte(21)
+      ..write(obj.userName);
   }
 }

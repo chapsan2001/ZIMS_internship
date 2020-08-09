@@ -6,6 +6,7 @@ import 'package:zimsmobileapp/domain/exceptions/app_exceptions.dart';
 import 'package:zimsmobileapp/domain/navigation/navigation_manager.dart';
 import 'package:zimsmobileapp/domain/navigation/routes.dart';
 import 'package:zimsmobileapp/domain/repositories/permit_repository.dart';
+import 'package:zimsmobileapp/main.dart';
 
 class PermitPhotoBloc extends Bloc<PermitPhotoEvent, PermitPhotoState> {
   final PermitRepository permitRepository;
@@ -37,6 +38,13 @@ class PermitPhotoBloc extends Bloc<PermitPhotoEvent, PermitPhotoState> {
       yield PermitPhotoNotFound();
     } on UnauthorizedException {
       navigationManager.pushRouteWithReplacement(Routes.LOGIN);
+      attempts = 3;
+      pinFlag = false;
+      pin = [null, null, null, null];
+      pinEnter = [null, null, null, null];
+      dots = [false, false, false, false];
+      dotNum = 0;
+      userName = null;
     } catch (e) {
       yield PermitPhotoError(exception: e);
     }

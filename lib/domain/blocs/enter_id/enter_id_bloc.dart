@@ -95,6 +95,7 @@ class EnterIdBloc extends Bloc<EnterIdEvent, EnterIdState> {
       pinEnter = [null, null, null, null];
       dots = [false, false, false, false];
       dotNum = 0;
+      userName = null;
       navigationManager.pushRouteWithReplacement(Routes.LOGIN);
     }
   }

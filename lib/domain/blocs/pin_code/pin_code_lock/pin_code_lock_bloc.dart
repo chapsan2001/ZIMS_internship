@@ -35,6 +35,7 @@ class PinCodeLockBloc extends Bloc<PinCodeLockEvent, PinCodeLockState> {
       pinEnter = [null, null, null, null];
       dots = [false, false, false, false];
       dotNum = 0;
+      userName = null;
       navigationManager.pushRouteWithReplacement(Routes.LOGIN);
     }
     yield PinCodeLockErrorState();
@@ -50,6 +51,7 @@ class PinCodeLockBloc extends Bloc<PinCodeLockEvent, PinCodeLockState> {
       pinEnter = [null, null, null, null];
       dots = [false, false, false, false];
       dotNum = 0;
+      userName = null;
       navigationManager.pushRouteWithReplacement(Routes.LOGIN);
     }
   }

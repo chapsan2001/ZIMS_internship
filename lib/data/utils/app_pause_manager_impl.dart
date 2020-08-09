@@ -3,6 +3,7 @@ import 'package:zimsmobileapp/domain/navigation/navigation_manager.dart';
 import 'package:zimsmobileapp/domain/navigation/routes.dart';
 import 'package:zimsmobileapp/domain/utils/app_pause_manager.dart';
 import 'package:zimsmobileapp/domain/utils/app_preferences.dart';
+import 'package:zimsmobileapp/main.dart';
 
 class AppPauseManagerImpl implements AppPauseManager {
   // 3 minutes
@@ -26,7 +27,18 @@ class AppPauseManagerImpl implements AppPauseManager {
 
     appPreferences.getLastResumeTimestamp().then((lastTimestamp) {
       if (lastTimestamp > 0 && timestamp - lastTimestamp > MAX_PAUSE_MILLIS) {
-        navigationManager.pushRouteWithReplacement(Routes.PIN_CODE_LOCK);
+        if (pinFlag) {
+          navigationManager.pushRouteWithReplacement(Routes.PIN_CODE_LOCK);
+        } else {
+          navigationManager.pushRouteWithReplacement(Routes.LOGIN);
+          attempts = 3;
+          pinFlag = false;
+          pin = [null, null, null, null];
+          pinEnter = [null, null, null, null];
+          dots = [false, false, false, false];
+          dotNum = 0;
+          userName = null;
+        }
       }
 
       return null;
