@@ -63,7 +63,7 @@ class _PinCodeInitScreenState extends State<PinCodeInitScreen>
                 leading: IconButton(
                   icon: Icon(Icons.help_outline,
                       color: getAppThemeData(context).primaryColor),
-                  onPressed: _onHelpPressed,
+                  onPressed: () => _onHelpPressed(),
                   tooltip: allTranslations.text("pin_help.title"),
                 ),
                 actions: <Widget>[
@@ -243,10 +243,14 @@ class _PinCodeInitScreenState extends State<PinCodeInitScreen>
   AlertDialog _createAndroidHelpMessage(BuildContext context) {
     return AlertDialog(
       title: Text(allTranslations.text("pin_help.title")),
-      content: ListView(
-        children: <Widget>[
-          Text(allTranslations.text("pin_help.msg"))
-        ],
+      content: Container(
+        width: double.maxFinite,
+        child: ListView(
+          children: <Widget>[
+            Text(allTranslations.text("pin_help.msg"),
+            style: TextStyle(fontSize: 20))
+          ],
+        ),
       ),
       actions: <Widget>[
         FlatButton(
