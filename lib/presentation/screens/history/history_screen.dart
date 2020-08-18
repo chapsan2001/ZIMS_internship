@@ -28,8 +28,6 @@ class _HistoryScreenState extends State<HistoryScreen>
   Color _darkGray;
   Color _lightGray;
 
-  int tileIndex = 1;
-
   void initState() {
     super.initState();
     _grayBackground = getColor(context, CustomColors.GRAY_BACKGROUND_COLOR);
@@ -64,7 +62,7 @@ class _HistoryScreenState extends State<HistoryScreen>
             documentNumber: _pd.permitNumber)));
   }
 
-  Widget historyCardTemplate(int i, int j){
+  Widget historyCardTemplate(int i){
     int index = Hive.box('history').length-1-i;
     final _pd = Hive.box('history').getAt(index) as PermitData;
     if (userName == _pd.userName) {
@@ -82,7 +80,7 @@ class _HistoryScreenState extends State<HistoryScreen>
                   child: CircleAvatar(
                     radius: 24.5,
                     backgroundColor: Colors.white,
-                    child: Text(j.toString(),
+                    child: Text((i+1).toString(),
                         style: TextStyle(color: Colors.black, fontSize: 19)
                     ),
                   ),
@@ -120,11 +118,13 @@ class _HistoryScreenState extends State<HistoryScreen>
           int listTilesCount;
           bool histFlag;
           bool userFlag;
-          for (int i = 0; i <= Hive.box('history').length; i++) {
-            final _pd = Hive.box('history').getAt(i) as PermitData;
-            if (userName == _pd.userName) {
-              userFlag = true;
-              break;
+          if (Hive.box('history').length != 0) {
+            for (int i = 0; i <= Hive.box('history').length; i++) {
+              final _pd = Hive.box('history').getAt(i) as PermitData;
+              if (userName == _pd.userName) {
+                userFlag = true;
+                break;
+              }
             }
           }
           if (Hive.box('history').length == 0 || !userFlag) {
@@ -159,8 +159,7 @@ class _HistoryScreenState extends State<HistoryScreen>
                 itemCount: listTilesCount,
                 itemBuilder: (BuildContext context, int index) {
                   if (histFlag && userFlag) {
-                    tileIndex++;
-                    return historyCardTemplate(index, tileIndex--);
+                    return historyCardTemplate(index);
                   } else {
                     return ListTile(
                       title: Text(allTranslations.text("history.no_docs"),
